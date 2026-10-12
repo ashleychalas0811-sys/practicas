@@ -1,0 +1,155 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+
+/**
+ *
+ * @author Ashley Camila Chalas Santana
+ */
+import java.util.Scanner;
+
+/**
+ * Clase que representa la Calculadora Matemática.
+ * Contiene los atributos privados y métodos para operaciones básicas.
+ */
+class CalculadoraMatematica {
+
+    // Atributos privados
+    private double numero1;
+    private double numero2;
+
+    /**
+     * Constructor por defecto
+     */
+    public CalculadoraMatematica() {
+        this.numero1 = 0.0;
+        this.numero2 = 0.0;
+    }
+
+    /**
+     * Establece los números para realizar las operaciones.
+     * @param numero1 Primer número
+     * @param numero2 Segundo número
+     */
+    public void establecerNumeros(double numero1, double numero2) {
+        this.numero1 = numero1;
+        this.numero2 = numero2;
+    }
+
+    /**
+     * @return Suma de ambos números
+     */
+    public double calcularSuma() {
+        return numero1 + numero2;
+    }
+
+    /**
+     * @return Resta de ambos números
+     */
+    public double calcularResta() {
+        return numero1 - numero2;
+    }
+
+    /**
+     * @return Producto de ambos números
+     */
+    public double calcularMultiplicacion() {
+        return numero1 * numero2;
+    }
+
+    /**
+     * @return División de numero1 entre numero2 con manejo de división por cero
+     */
+    public double calcularDivision() {
+        if (numero2 == 0) {
+            System.out.println("Error: No se puede dividir entre cero.");
+            return Double.NaN;
+        }
+        return numero1 / numero2;
+    }
+
+    /**
+     * Método ejecutable principal (Main)
+     */
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        CalculadoraMatematica calculadora = new CalculadoraMatematica();
+
+        int opcionMenu;
+        boolean numerosIngresados = false;
+
+        do {
+            System.out.println("\n===== CALCULADORA MATEMÁTICA =====");
+            System.out.println("1. Ingresar números");
+            System.out.println("2. Sumar");
+            System.out.println("3. Restar");
+            System.out.println("4. Multiplicar");
+            System.out.println("5. Dividir");
+            System.out.println("0. Salir");
+            System.out.println("==================================");
+            System.out.print("Seleccione una opción: ");
+
+            opcionMenu = scanner.nextInt();
+
+            switch (opcionMenu) {
+                case 1:
+                    System.out.print("Ingrese el primer número: ");
+                    double num1 = scanner.nextDouble();
+                    System.out.print("Ingrese el segundo número: ");
+                    double num2 = scanner.nextDouble();
+
+                    calculadora.establecerNumeros(num1, num2);
+                    numerosIngresados = true;
+                    System.out.println("Números guardados correctamente.");
+                    break;
+
+                case 2:
+                    if (numerosIngresados) {
+                        System.out.println("Resultado de la Suma: " + calculadora.calcularSuma());
+                    } else {
+                        System.out.println("Por favor, ingrese los números primero (Opción 1).");
+                    }
+                    break;
+
+                case 3:
+                    if (numerosIngresados) {
+                        System.out.println("Resultado de la Resta: " + calculadora.calcularResta());
+                    } else {
+                        System.out.println("Por favor, ingrese los números primero (Opción 1).");
+                    }
+                    break;
+
+                case 4:
+                    if (numerosIngresados) {
+                        System.out.println("Resultado de la Multiplicación: " + calculadora.calcularMultiplicacion());
+                    } else {
+                        System.out.println("Por favor, ingrese los números primero (Opción 1).");
+                    }
+                    break;
+
+                case 5:
+                    if (numerosIngresados) {
+                        double resultado = calculadora.calcularDivision();
+                        if (!Double.isNaN(resultado)) {
+                            System.out.println("Resultado de la División: " + resultado);
+                        }
+                    } else {
+                        System.out.println("Por favor, ingrese los números primero (Opción 1).");
+                    }
+                    break;
+
+                case 0:
+                    System.out.println("Saliendo del programa...");
+                    break;
+
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+                    break;
+            }
+
+        } while (opcionMenu != 0);
+
+        scanner.close();
+    }
+}
