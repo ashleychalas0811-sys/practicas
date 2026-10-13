@@ -1,0 +1,46 @@
+public class calculadora { public int sumar(int a, int b){ return a + b;
+}
+public int restar(int a, int b){ return a - b;
+}
+public int multiplicar(int a, int b){ return a * b;
+}
+public int dividir(int a, int b){ return a / b;
+}
+
+
+
+
+///sobrecarga con 3 parámetros public int sumar(int a, int b, int c){ return a + b + c;
+}
+public int restar(int a, int b, int c){ return a - b - c;
+}
+public int multiplicar(int a, int b, int c){ return a * b * c;
+}
+ 
+///sobrecarga con 4 parámetros public int sumar(int a, int b, int c, int d){ return a + b + c + d;
+}
+public int restar(int a, int b, int c, int d) { return a - b - c - d;
+}
+public int multiplicar(int a, int b, int c, int d) { return a * b * c * d;
+}
+}
+
+
+public class pruebacalculadora { public static void main(String[] args){ calculadora calc = new calculadora();
+
+// Pruebas con 2 parámetros
+System.out.println("Suma (2 parametros): " + calc.sumar(5, 3));
+System.out.println("Resta (2 parametros): " + calc.restar(10, 4)); System.out.println("Multiplicacion (2 parametros): " + calc.multiplicar(6, 7)); System.out.println("Division (2 parametros): " + calc.dividir(20, 4));
+
+
+// Pruebas con 3 parámetros
+System.out.println("Suma (3 parametros): " + calc.sumar(5, 3, 2));
+System.out.println("Resta (3 parametros): " + calc.restar(10, 4, 2));
+System.out.println("Multiplicacion (3 parametros): " + calc.multiplicar(2, 3, 4));
+ 
+// Pruebas con 4 parámetros
+System.out.println("Suma (4 parametros): " + calc.sumar(1, 2, 3, 4));
+System.out.println("Resta (4 parametros): " + calc.restar(20, 5, 3, 2));
+System.out.println("Multiplicacion (4 parametros): " + calc.multiplicar(2, 2, 2, 2));
+}
+}
