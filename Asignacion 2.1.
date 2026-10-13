@@ -1,0 +1,27 @@
+//Ashley Camila Chalas Santana 2026-0038
+public class Tv {
+    public int pulgadas;
+    public boolean encendido;
+    public int volumen;
+    String marca;
+
+    public void encender() {
+        this.encendido = true;
+        System.out.println("La TV se está encendiendo...");
+    }
+
+    public void apagar() {
+        this.encendido = false;
+        System.out.println("La TV se está apagando...");
+    }
+
+    public void subirVolumen() {
+        this.volumen++;
+        System.out.println("Subiendo el volumen...");
+    }
+
+    public void bajarVolumen() {
+        this.volumen--;
+        System.out.println("Bajando el volumen...");
+    }
+}
