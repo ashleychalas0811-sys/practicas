@@ -1,0 +1,72 @@
+import java.time.LocalDate;
+
+
+public class Prestamo { private LocalDate fecha; private Usuario usuario; private Libro libro;
+
+
+
+public Prestamo(Usuario usuario, Libro libro) { this.fecha = LocalDate.now();
+this.usuario = usuario; this.libro = libro;
+}
+
+
+
+
+public boolean prestarLibro() {
+if (libro.consultarDisponibilidad()) { libro.setDisponible(false); usuario.agregarLibro(libro);
+System.out.println("Exito: Se le presto el libro '" + libro.getTitulo() + "' a " + usuario.getNombre() + ".");
+return true;
+} else {
+System.out.println(" Error: El libro '" + libro.getTitulo() + "' no está disponible."); return false;
+}
+ 
+}
+
+
+
+
+public boolean devolverLibro() {
+if (!libro.consultarDisponibilidad() && usuario.getLibrosPrestados().contains(libro)) { libro.setDisponible(true);
+usuario.removerLibro(libro);
+System.out.println("Exito: El libro '" + libro.getTitulo() + "' fue devuelto correctamente."); return true;
+} else {
+System.out.println(" Error: Este libro no puede ser devuelto por este usuario."); return false;
+}
+}
+
+
+
+
+public LocalDate getFecha() { return fecha; } public Usuario getUsuario() { return usuario; } public Libro getLibro() { return libro; }
+}
+
+
+
+
+public class Main {
+public static void main(String[] args) {
+ 
+Libro libro1 = new Libro("Cien Anios de Soledad", "Gabriel Garcia Marquez", "978-0307474728");
+Usuario usuario1 = new Usuario("Ashley", "U009");
+
+
+
+
+System.out.println("Esta disponible?: " + libro1.consultarDisponibilidad());
+
+
+
+
+Prestamo prestamo1 = new Prestamo(usuario1, libro1); prestamo1.prestarLibro();
+
+
+
+System.out.println("Esta disponible ahora?: " + libro1.consultarDisponibilidad());
+
+
+
+
+prestamo1.devolverLibro();
+System.out.println("Esta disponible tras devolucion?: " + libro1.consultarDisponibilidad());
+}
+}
